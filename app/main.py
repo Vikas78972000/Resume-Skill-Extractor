@@ -28,8 +28,8 @@ app.add_middleware(
 app.add_middleware(LoggingMiddleware)
 
 #  Include API routes
-app.include_router(router, prefix="/api")            # General API routes
-app.include_router(skills.router, prefix="/api/v1")  # Skills route
+app.include_router(router, prefix="")            # General API routes
+app.include_router(skills.router, prefix="")  # Skills route
 
 #  Health check route
 @app.get("/")
