@@ -5,8 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import os
 from dotenv import load_dotenv
 
-from app.routes import skills  # ✅ Import the skills router
-
+from app.routes import skills 
 # Load environment variables
 load_dotenv()
 
@@ -16,7 +15,7 @@ app = FastAPI(
     version=os.getenv("API_VERSION", "v1")
 )
 
-# ✅ Add CORS middleware
+#  Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Allow all origins (for dev)
@@ -25,14 +24,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ✅ Add logging middleware
+#  Add logging middleware
 app.add_middleware(LoggingMiddleware)
 
-# ✅ Include API routes
+#  Include API routes
 app.include_router(router, prefix="/api")            # General API routes
 app.include_router(skills.router, prefix="/api/v1")  # Skills route
 
-# ✅ Health check route
+#  Health check route
 @app.get("/")
 def read_root():
     return {
